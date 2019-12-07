@@ -6,13 +6,14 @@
 
 Timer callFunc;
 
-#define CONSTNUMBER 2^60
+#define CONSTNUMBER 1234567
 
 uint64_t someLongNumber = CONSTNUMBER;
 
 
 void f(String arg) {
 	if(someLongNumber != CONSTNUMBER) {
+		debugf("%d - ", someLongNumber);
 		debugf("ERROR ERROR ERROR");
 	}
 }
@@ -34,7 +35,8 @@ void init()
 	Debug.start();
 	Debug.printf("This is the debug output\r\n");
 
+	debugf("%d", someLongNumber);
 	if(someLongNumber == CONSTNUMBER)
 		debugf("So far, so good");
-	callFunc.initializeMs(10, f2).start();
+	callFunc.initializeMs(1, f2).start();
 }
